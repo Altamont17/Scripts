@@ -9,6 +9,9 @@ $ScriptVersion = "1.0"
 New-Item -Path $RegistryPath -Force | Out-Null
 Set-ItemProperty -Path $RegistryPath -Name $RegistryValueName -Value $ScriptVersion
 
+New-Item -Path "Registry::HKEY_LOCAL_MACHINE\Software\" -Name "ScriptDetection" -Force
+New-ItemProperty -Path "Registry::HKEY_LOCAL_MACHINE\Software\ScriptDetection" -Name "RemoveBuiltinWindowsApps" -Value "1.0" -PropertyType String
+
 $RemoveApps = "*Microsoft.BingNews*",
 "*Microsoft.PowerAutomateDesktop*",
 "*MicrosoftTeams*",
