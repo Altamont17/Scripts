@@ -6,7 +6,7 @@ Set-ExecutionPolicy bypass -Force
 #$ScriptVersion = "1.0"
 
 # Create or update the registry key and value
-New-Item -Path 'HKLM:\Software\ScriptDetection' -Force | Out-Null
+New-Item -Path 'HKLM:\Software\ScriptDetection' -Force
 Set-ItemProperty -Path 'HKLM:\Software\ScriptDetection' -Name 'RemoveBuiltinWindowsApps' -Value '1.0' -Force
 
 $RemoveApps = "*Microsoft.BingNews*",
