@@ -1,16 +1,13 @@
 $ErrorActionPreference = "SilentlyContinue"
 Set-ExecutionPolicy bypass -Force
 
-$RegistryPath = "HKLM:\Software\ScriptDetection"
-$RegistryValueName = "RemoveBuiltinWindowsApps"
-$ScriptVersion = "1.0"
+#$RegistryPath = "HKLM:\Software\ScriptDetection"
+#$RegistryValueName = "RemoveBuiltinWindowsApps"
+#$ScriptVersion = "1.0"
 
 # Create or update the registry key and value
-New-Item -Path $RegistryPath -Force | Out-Null
-Set-ItemProperty -Path $RegistryPath -Name $RegistryValueName -Value $ScriptVersion
-
-New-Item -Path "Registry::HKEY_LOCAL_MACHINE\Software\" -Name "ScriptDetection" -Force
-New-ItemProperty -Path "Registry::HKEY_LOCAL_MACHINE\Software\ScriptDetection" -Name "RemoveBuiltinWindowsApps" -Value "1.0" -PropertyType String
+New-Item -Path 'HKLM:\Software\ScriptDetection' -Force | Out-Null
+Set-ItemProperty -Path 'HKLM:\Software\ScriptDetection' -Name 'RemoveBuiltinWindowsApps' -Value '1.0' -Force
 
 $RemoveApps = "*Microsoft.BingNews*",
 "*Microsoft.PowerAutomateDesktop*",
@@ -59,6 +56,6 @@ ForEach ($Name in $RemoveApps)
     }
 }
  
- #Test Script
+#Test Script
 
 #wget "https://s3.amazonaws.com/download.dymo.com/dymo/Software/Win/DCDSetup1.4.3.131.exe" -outfile C:\ProgramData\RemoveWindowsBuiltInApps\DCDSetup1.4.3.131.exe
